@@ -74,21 +74,7 @@
         <br>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2">
-                    <div class="card">
-                        <div class="card-header">Menu Principal</div>
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
-                            <a href="/clients" class="btn btn-primary btn-sm col-md-12">Clientes Ativos</a><br>
-                            <a href="/potential_clients" class="btn btn-warning btn-sm col-md-12">Clientes em potencial</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     @yield('content')
                 </div>
             </div>
