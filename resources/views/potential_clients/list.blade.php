@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="card border-primary">
+        <div class="card border-warning">
             <div class="card-header">
                 Filtros 
-                <div class="btn-group pull-right" style="float:right;" role="group" aria-label="Basic example">
-                    <button style="float:right" type="button" class="btn btn-primary pull-right">Novo cliente</button>
-                </div>
+                
             </div>
             <div class="card-body">
+                <div class="btn-group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Fonte
+                    </button>
+                    <div class="dropdown-menu">
+                        Google Places
+                    </div>
+                </div>
                 <div class="btn-group">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         UF
@@ -57,11 +63,17 @@
 
     <br>
 
-        <div class="card border-primary">
-            <div class="card-header">Lista</div>
-
+        <div class="card border-warning">
+            <div class="card-header">
+            Lista
+            <div class="btn-group pull-right" style="float:right;" role="group" aria-label="Basic example">
+                    <button style="float:right" type="button" class="btn btn-primary pull-right">Exportar</button>
+                </div>
+            </div>           
             <div class="card-body">
-
+            <div style="width: 100%; height: 500px;">
+                {!! Mapper::render() !!}
+            </div>
                 <table class="table table-condensed table-hover">
                     <thead>
                         <tr>
@@ -76,7 +88,7 @@
                         </th>
                     </thead>
                     <tbody>
-                        @forelse($clients as $client)
+                        @forelse($potentialClients as $client)
                             <tr>
                                 <td>{{$client->razao_social}}</td>
                                 <td>{{$client->nome_fantasia}}</td>
@@ -92,7 +104,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="8">Nenhum cliente cadastrado</td>
+                                <td colspan="8">Nenhum cliente em potencial cadastrado</td>
                             </tr>
                         @endforelse
 

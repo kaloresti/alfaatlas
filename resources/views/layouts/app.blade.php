@@ -75,7 +75,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-header">Menu Principal</div>
                         <div class="card-body">
                             @if (session('status'))
@@ -83,7 +83,8 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <a href="/clients" class="btn btn-primary btn-sm col-md-12">Clientes Ativos</a><br>
+                            <a href="/home" class="btn btn-dark btn-sm col-md-12">Dashboard</a><br><br>
+                            <a href="/clients" class="btn btn-primary btn-sm col-md-12">Clientes Ativos</a><br><br>
                             <a href="/potential_clients" class="btn btn-warning btn-sm col-md-12">Clientes em potencial</a>
                         </div>
                     </div>

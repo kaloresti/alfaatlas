@@ -31,6 +31,9 @@ class CreatePotentialClientsTable extends Migration
             $table->string('logradouro');
             $table->string('numero');
             $table->boolean('status');
+            $table->boolean('spc');
+            $table->boolean('cerasa');
+            $table->string('fonte');
             $table->timestamps();
         });
     }
