@@ -5,7 +5,7 @@
             <div class="card-header">
                 Filtros 
                 <div class="btn-group pull-right" style="float:right;" role="group" aria-label="Basic example">
-                    <button style="float:right" type="button" class="btn btn-primary pull-right">Novo cliente</button>
+                    <a href="clients/create" style="float:right" type="button" class="btn btn-primary pull-right">Novo cliente</a>
                 </div>
             </div>
             <div class="card-body">
