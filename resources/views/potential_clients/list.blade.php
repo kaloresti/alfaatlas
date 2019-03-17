@@ -7,55 +7,51 @@
                 
             </div>
             <div class="card-body">
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Fonte
-                    </button>
-                    <div class="dropdown-menu">
-                        Google Places
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        UF
-                    </button>
-                    <div class="dropdown-menu">
-                        ...
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Cidades
-                    </button>
-                    <div class="dropdown-menu">
-                        ...
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Bairro
-                    </button>
-                    <div class="dropdown-menu">
-                        ...
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Logradouro
-                    </button>
-                    <div class="dropdown-menu">
-                        ...
-                    </div>
-                </div>
 
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success">Ativo</button>
-                    <button type="button" class="btn btn-danger">Inativo</button>
+                <fieldset>
+                    <legend>Filtros padrões</legend>
+                        <div class="btn-group">
+                            <select name="font" id="font">
+                                <option value="-1">Fonte de dados</option>
+                                <option value="google_places">Google Places</option>
+                            </select>
+                        </div>
+                </fieldset>
+                <br>
+                <div class="card border-warning">
+                    <div class="card-header">Categorias</div>
+                    
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <div class="row">
+                                @forelse($typePlaces as $type)
+                                <div class="col-md-2">
+                                    <div class="form-check" class="inline">
+                                        <input style="display:inline" class="form-check-input" type="checkbox" value="{{$type}}" id="invalidCheck2" required>
+                                        <label class="form-check-label" for="invalidCheck2">
+                                            {{$type}}
+                                        </label>
+                                    </div>
+                                </div>
+                                @empty
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <br>
+                <div style="width: 100%; height: 500px;">
+                    {!! Mapper::render() !!}
+                </div>
+                <br> <br>
+                <label for="validationDefault01">Digite qualquer coisa</label>
+                <input type="text" class="form-control" id="validationDefault01" placeholder="digite nome de lugares, paises, ruas, etc" value="" required>
+                
 
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary">SPC</button>
-                    <button type="button" class="btn btn-secondary">CERASA</button>
+                <br><br><br>
+
+                <div style="text-align:center">
+                    <button class="btn btn-primary btn-lg" type="submit">PESQUISAR</button>
                 </div>
 
             </div>
@@ -71,9 +67,6 @@
                 </div>
             </div>           
             <div class="card-body">
-            <div style="width: 100%; height: 500px;">
-                {!! Mapper::render() !!}
-            </div>
                 <table class="table table-condensed table-hover">
                     <thead>
                         <tr>
