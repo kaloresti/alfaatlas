@@ -54,9 +54,19 @@
 
             </div>
         </div>
-
+        <br>
+        <div class="card border-light">
+            <form action="/clients/importClientsFile" method="POST" enctype="multipart/form-data">
+            @csrf
+                <div class="btn-group pull-right border border-primary" style="float:right;" role="group" aria-label="Basic example">
+                    <input type="file" style="float:right" class="btn btn-light pull-right" name="file_select"></a>
+                </div>
+                <div class="btn-group pull-right" style="float:right; margin-right:4px;" role="group" aria-label="Basic example">
+                    <input type="submit" style="float:right;" class="btn btn-primary pull-right" value="Importar Excel"></a>
+                </div>
+            </form>
+        </div>
     <br>
-
         <div class="card border-primary">
             <div class="card-header">Lista</div>
 

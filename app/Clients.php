@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Concerns\ToModel;
 
-class Clients extends Model
+class Clients extends Model implements ToModel
 {
     use Notifiable;
 
@@ -63,6 +65,28 @@ class Clients extends Model
             'numero' => 'required|max:20',
             'status' => 'required',
         ];
+    }
+
+    public function model(array $row) 
+    {
+        return new Clients([
+            'cnpj' => $row[0],
+            'incricao_estatudal' => $row[1],
+            'razao_social' => $row[2],
+            'nome_fantasia' => $row[3],
+            'nome_responsavel' => $row[4],
+            'telefone' => $row[5],
+            'email_principal' => $row[6],
+            'celular' => $row[7],
+            'cep' => $row[8],
+            'cidade' => $row[9],
+            'bairro' => $row[10],
+            'estado' => $row[11],
+            'pais' => $row[12],
+            'logradouro' => $row[13],
+            'numero' => $row[14],
+            'status' => (int) $row[15],
+        ]);
     }
 
 }
