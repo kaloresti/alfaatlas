@@ -8,8 +8,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
-class Clients extends Model implements ToModel
+class Clients extends Model implements ToModel, FromCollection
 {
     use Notifiable;
 
@@ -87,6 +88,11 @@ class Clients extends Model implements ToModel
             'numero' => $row[14],
             'status' => (int) $row[15],
         ]);
+    }
+
+    public function collection()
+    {
+        return Clients::all();
     }
 
 }

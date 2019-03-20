@@ -68,7 +68,10 @@
         </div>
     <br>
         <div class="card border-primary">
-            <div class="card-header">Lista</div>
+            <div class="card-header">
+                Lista
+                <a href="clients/exportClientsFile" style="float:right" type="button" class="btn btn-primary pull-right">Exportar</a>
+            </div>
 
             <div class="card-body">
 
