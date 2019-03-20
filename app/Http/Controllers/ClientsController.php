@@ -9,16 +9,21 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
-//use Validator;
 
 class ClientsController extends Controller
 {
     private $client;
+    private $validExtensions;
 
     public function __construct()
     {
         $this->client = new Clients();
         $this->file = new FileStream();
+
+        $this->validExtensions = [
+            'xls',
+            'xlsx'
+        ];
     }
 
     public function index()
@@ -80,6 +85,14 @@ class ClientsController extends Controller
             $this->file->size = $request->file_select->getClientSize();
             $this->file->extension = $request->file_select->getClientOriginalExtension();
 
+            if (in_array($this->file->extension, $this->validExtensions)) {
+                return  redirect()->back()->with('error', 'Arquivo inválido! Apenas .xls e .xlsx');
+            }
+
+            if ($this->file->size > 10240) {
+                return  redirect()->back()->with('error', 'É permitido arquivos até 10MB');
+            }
+
             $date = uniqid(date('HisYmd'));
            
             $name = explode(".", $this->file->fileName);
@@ -102,5 +115,19 @@ class ClientsController extends Controller
         }
         
         return  redirect()->back()->with('success', 'Planilha Importada com Sucesso!');
+    }
+
+    public function exportClientsFile() 
+    {
+        $date = uniqid(date('HisYmd'));
+           
+        $fileName = "Clients.{$date}.xlsx";
+
+        $filePath = '/files_exported/'.$fileName;
+
+        Excel::store(new Clients, $filePath);
+
+        return  redirect()->back()->with('success', 'Planilha Importada com Sucesso!');
+        
     }
 }
