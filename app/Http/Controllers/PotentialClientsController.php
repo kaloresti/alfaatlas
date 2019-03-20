@@ -19,11 +19,12 @@ class PotentialClientsController extends Controller
     private $typeSearchs;
     public $client;
     public $countries;
+    public $googlePlaces;
 
     public function __construct(PotentialClients $potentialClient)
     {
         $this->potentialClient = $potentialClient;
-        $googlePlaces = new PlacesApi('AIzaSyAtqWsq5Ai3GYv6dSa6311tZiYKlbYT4mw');
+        $this->googlePlaces = new PlacesApi('AIzaSyA1wFEFGjTLKx_CSRVMuQRWvMkWZllmlLw');
         $this->client = new Client(); //GuzzleHttp\Client
         $this->countries = new Countries(new Config([
             'hydrate' => [
@@ -35,14 +36,11 @@ class PotentialClientsController extends Controller
             ],
         ]));
         //$countries = new Countries();
-
-        
-        //$response = $googlePlaces->placeDetails('ChIJrTLr-GyuEmsRBfy61i59si0');
-        //dd($response);
     }
 
     public function index()
     {
+        $resultSerach = [];
         // -- categorias dos lugares
         $typePlaces = $this->potentialClient->types;
         // -- tipos de buscas permitidas pelo google places
@@ -53,23 +51,22 @@ class PotentialClientsController extends Controller
         $allCountries = $this->countries->all();
         // error_log(print_r($countries, true), 0);
         //dd($allCountries);
+        $response = $this->googlePlaces->textSearch('restaurants+in+SaoPaulo');
+        $resultSerach = $response['results'];
+        //dd($resultSerach);
         Mapper::map(53.381128999999990000, -1.470085000000040000);
+        
+        // Mapper::marker(52.381128999999990000, 0.470085000000040000);
        
-        return view('potential_clients.list', compact('potentialClients', 'typePlaces', 'typeSearchs', 'allCountries'));
+        return view('potential_clients.list', compact('potentialClients', 'typePlaces', 'typeSearchs', 'allCountries', 'resultSerach'));
     }
-
-    public function searchCities(Array $countries)
+    
+    public function placeDetails($place_id)
     {
+        $response = $this->googlePlaces->placeDetails($place_id);
+        $resultSerach = $response['result'];
 
+        return json_encode($resultSerach);
     }
 
-    public function requestParameters(Array $params)
-    {
-        // -- render parameters to serach
-    }
-
-    public function search()
-    {
-
-    }
 }

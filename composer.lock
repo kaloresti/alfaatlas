@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "d4c73152d0d265f1b476522b1e4629f8",
+    "content-hash": "fb707ab2e9365628239b2bcea92fbb99",
     "packages": [
         {
             "name": "colinodell/json5",
@@ -2178,7 +2177,6 @@
             "time": "2016-01-26T13:27:02+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "phpoffice/phpspreadsheet",
             "version": "1.6.0",
             "source": {
@@ -2271,18 +2269,19 @@
                 "xlsx"
             ],
             "time": "2019-01-02T04:42:54+00:00"
-=======
+        },
+        {
             "name": "pragmarx/coollection",
-            "version": "v0.6.1",
+            "version": "v0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/coollection.git",
-                "reference": "3a155ded3186f723774e65c9ea2d79ab439c4a84"
+                "reference": "76db6ea9fd53c7265d23d754f934cfdd866c2f22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/coollection/zipball/3a155ded3186f723774e65c9ea2d79ab439c4a84",
-                "reference": "3a155ded3186f723774e65c9ea2d79ab439c4a84",
+                "url": "https://api.github.com/repos/antonioribeiro/coollection/zipball/76db6ea9fd53c7265d23d754f934cfdd866c2f22",
+                "reference": "76db6ea9fd53c7265d23d754f934cfdd866c2f22",
                 "shasum": ""
             },
             "require": {
@@ -2333,7 +2332,7 @@
                 "laravel",
                 "pragmarx"
             ],
-            "time": "2018-09-26T21:11:58+00:00"
+            "time": "2019-03-17T16:53:47+00:00"
         },
         {
             "name": "pragmarx/countries",
@@ -2399,16 +2398,16 @@
         },
         {
             "name": "pragmarx/ia-arr",
-            "version": "v5.6.33",
+            "version": "v5.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/ia-arr.git",
-                "reference": "4c0fd512616064822b6d50ca0e6bc8aa8eb3c067"
+                "reference": "6200797fd6bd2157dab0d979b9aec3e1c2f81b35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/ia-arr/zipball/4c0fd512616064822b6d50ca0e6bc8aa8eb3c067",
-                "reference": "4c0fd512616064822b6d50ca0e6bc8aa8eb3c067",
+                "url": "https://api.github.com/repos/antonioribeiro/ia-arr/zipball/6200797fd6bd2157dab0d979b9aec3e1c2f81b35",
+                "reference": "6200797fd6bd2157dab0d979b9aec3e1c2f81b35",
                 "shasum": ""
             },
             "require": {
@@ -2461,20 +2460,20 @@
                 "laravel",
                 "pragmarx"
             ],
-            "time": "2018-08-19T20:20:32+00:00"
+            "time": "2019-03-17T16:49:30+00:00"
         },
         {
             "name": "pragmarx/ia-collection",
-            "version": "v5.7.5",
+            "version": "v5.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/ia-collection.git",
-                "reference": "a7bdd40c452e60f55ce81a9af01e12fea0c60a93"
+                "reference": "b96e4eff59ad0a09bd4a69c6e8f50b42a5d463dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/ia-collection/zipball/a7bdd40c452e60f55ce81a9af01e12fea0c60a93",
-                "reference": "a7bdd40c452e60f55ce81a9af01e12fea0c60a93",
+                "url": "https://api.github.com/repos/antonioribeiro/ia-collection/zipball/b96e4eff59ad0a09bd4a69c6e8f50b42a5d463dc",
+                "reference": "b96e4eff59ad0a09bd4a69c6e8f50b42a5d463dc",
                 "shasum": ""
             },
             "require": {
@@ -2525,20 +2524,20 @@
                 "laravel",
                 "pragmarx"
             ],
-            "time": "2018-09-20T18:19:48+00:00"
+            "time": "2019-03-17T16:41:21+00:00"
         },
         {
             "name": "pragmarx/ia-str",
-            "version": "v5.6.33",
+            "version": "v5.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/ia-str.git",
-                "reference": "1572361ef0472404e3f3c53d9448a933fa86e33b"
+                "reference": "851285f4ad29582a3e460ec6d467584d4678f925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/ia-str/zipball/1572361ef0472404e3f3c53d9448a933fa86e33b",
-                "reference": "1572361ef0472404e3f3c53d9448a933fa86e33b",
+                "url": "https://api.github.com/repos/antonioribeiro/ia-str/zipball/851285f4ad29582a3e460ec6d467584d4678f925",
+                "reference": "851285f4ad29582a3e460ec6d467584d4678f925",
                 "shasum": ""
             },
             "require": {
@@ -2597,8 +2596,7 @@
                 "str",
                 "string"
             ],
-            "time": "2018-08-19T20:21:49+00:00"
->>>>>>> b51c6505434ce754cde2647c197f91cb5f8c7be8
+            "time": "2019-03-17T16:42:39+00:00"
         },
         {
             "name": "psr/container",

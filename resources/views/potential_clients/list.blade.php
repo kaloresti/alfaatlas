@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="card border-warning">
+        <div class="card border-warning" style="display:none;">
             <div class="card-header">
                 Filtros 
                 
@@ -106,139 +106,110 @@
             <div class="card-body">
                 <div style="width: 100%; height: 700px;">
                     {!! Mapper::render() !!}
-                </div>
-                <br>  <br> 
-                <div class="card-deck">
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
+                </div>            
                 <br><br><br>
-                <div class="card-deck">
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top" src="https://i2-prod.mirror.co.uk/incoming/article7450291.ece/ALTERNATES/s615/Signs-alert-customers-to-special-offer-deals-in-the-chilled-section.jpg" alt="Card image cap">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
+                <!-- <div class="card-deck">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                            <th scope="col">Detalhes</th>
+                            <th scope="col">Icon</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Users Ratings</th>
+                            <th scope="col">Price Level</th>
+                            <th scope="col">Open now?</th>
+                            <th scope="col">Other types</th>
+                            </tr>
+                        </thead>
+                        <tbody> -->
+                            @forelse($resultSerach as $place)
+                            <div class="card">
+                                <div class="card-header">
+                                    <b class="text-uppercase">{{ $place['name'] }}</b> User Ratings: <b>{{ $place['user_ratings_total'] }}</b>
+                                </div>
+                                <div class="card-body">
+                                    <img style="width:30px height:30px;" src="{{$place['icon']}}" alt="">
+                                   <p><b>Endereço:</b> {{ $place['formatted_address'] }}</p>
+                                   <p><b>Price Level:</b> @if(isset($place['price_level'])) {{$place['price_level']}} @else {{ '---' }} @endif</p>
+                                   <p><b>Aberto agora? </b>{{ $place['opening_hours']["open_now"]}}</p>
+                                   
+                                   <p><b>Other types: </b>
+                                   @forelse($place['types'] as $types)
+                                             {{$types.', '}} 
+                                        @empty
+
+                                        @endforelse
+                                        </p>
+                                        <a class="btn btn-secondary btn-sm outline" href="javascript:details('{{$place['place_id']}}')">details</a> 
+                                </div>
+                            </div><br><br>
+                                <!-- <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{ $place['name'] }}</td>
+                                    <td>{{ $place['formatted_address'] }} </td>
+                                    <td>{{ $place['user_ratings_total'] }}</td>
+                                    <td>@if(isset($place['price_level'])) {{$place['price_level']}} @else {{ '---' }} @endif</td>
+                                    <td>{{ $place['opening_hours']["open_now"]}}</td>
+                                    <td>
+                                        @forelse($place['types'] as $types)
+                                            <span> {{$types}} </span><br>
+                                        @empty
+
+                                        @endforelse
+                                    </td>
+                                </tr> -->
+                            @empty
+
+                            @endforelse
+                        <!-- </tbody>
+                    </table>
+                </div> -->
             </div>
         </div>
+
+        <style>
+        
+        </style>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
         <script>
-            function googleSearch()
+            function details(place_id)
             {
-                alert("Oi !");
+                $('#exampleModalLong').modal("show")
+                $.ajax({
+                    type    :"GET",
+                    url     :"/potential_clients/place_details/"+place_id,
+                    dataType:"json",
+                    //data    :{ data1:data },
+                    success :function(response) {
+                        console.log(response);
+
+                    },
+                    error: function(e) {
+                        console.log(e.responseText);
+                    }
+                });
             }
         </script>
 
