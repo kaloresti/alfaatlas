@@ -51,10 +51,16 @@ class PotentialClientsController extends Controller
         $allCountries = $this->countries->all();
         // error_log(print_r($countries, true), 0);
         //dd($allCountries);
-        $response = $this->googlePlaces->textSearch('restaurants+in+SaoPaulo');
+        $response = $this->googlePlaces->textSearch('Microsoft+in+SaoPaulo');
         $resultSerach = $response['results'];
         //dd($resultSerach);
-        Mapper::map(53.381128999999990000, -1.470085000000040000);
+
+        Mapper::map(-23.533773, -46.625290);
+        foreach($resultSerach as $place) {
+            Mapper::marker($place['geometry']['location']['lat'], $place['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
+        }
+
+        //Mapper::map(53.381128999999990000, -1.470085000000040000);
         
         // Mapper::marker(52.381128999999990000, 0.470085000000040000);
        

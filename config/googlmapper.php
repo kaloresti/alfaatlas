@@ -213,7 +213,7 @@ return [
         | Display an animation effect for markers. (NONE|DROP|BOUNCE)
         |
         */
-        'animation' => 'NONE',
+        'animation' => 'BOUNCE',
 
     ],
 
@@ -255,7 +255,7 @@ return [
         | The grid size of a cluster in pixels.
         |
         */
-        'grid' => 60,
+        'grid' => 100,
 
         /*
         |--------------------------------------------------------------------------
