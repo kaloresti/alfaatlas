@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
             <form action="/clients/store" method="POST">
-            @csrf
+                @csrf
                 <div class="form-group">
                     <label for="cnpj">CNPJ</label>
                     <input type="text" class="form-control" name="cnpj">

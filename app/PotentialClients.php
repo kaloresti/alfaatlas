@@ -140,4 +140,25 @@ class PotentialClients extends Model
         'textSearch' => 'Texto Livre'
     ];
 
+    public function rules(){
+        return [
+            "lat" => 'required',
+            "lng" => 'required',
+            "locality" => 'required',
+            "radius" => 'required',
+            "type" => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "lat.required" => "Locality do not correct",
+            "lng.required'  => 'Locality do not correct",
+            "locality.required'  => 'Locality do not correct",
+            "radius.required'  => 'You must be choice a radius in KM",
+            "type.required'  => 'You must be choice one category",
+        ];
+    }
+
 }

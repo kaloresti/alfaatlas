@@ -21,6 +21,8 @@ class PotentialClientsController extends Controller
     public $countries;
     public $googlePlaces;
 
+    public $textSearch;
+
     public function __construct(PotentialClients $potentialClient)
     {
         $this->potentialClient = $potentialClient;
@@ -35,7 +37,8 @@ class PotentialClientsController extends Controller
                 ],
             ],
         ]));
-        //$countries = new Countries();
+        
+        $this->textSearch = "";
     }
 
     public function index()
@@ -49,30 +52,73 @@ class PotentialClientsController extends Controller
         $potentialClients = $this->potentialClient->all();
         
         $allCountries = $this->countries->all();
-        // error_log(print_r($countries, true), 0);
-        //dd($allCountries);
-        $response = $this->googlePlaces->textSearch('Microsoft+in+SaoPaulo');
+        
+        $response = $this->googlePlaces->textSearch('restaurant%SaoPaulo');
         $resultSerach = $response['results'];
-        //dd($resultSerach);
 
         Mapper::map(-23.533773, -46.625290);
         foreach($resultSerach as $place) {
             Mapper::marker($place['geometry']['location']['lat'], $place['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
         }
-
-        //Mapper::map(53.381128999999990000, -1.470085000000040000);
         
-        // Mapper::marker(52.381128999999990000, 0.470085000000040000);
-       
         return view('potential_clients.list', compact('potentialClients', 'typePlaces', 'typeSearchs', 'allCountries', 'resultSerach'));
     }
     
+    public function PlaceGoogleSearch(Request $request)
+    {   
+        
+        $request->validate($this->potentialClient->rules());
+
+        $dataSearch = (object)$request->all();
+        //dd($dataSearch);
+        $resultSerach = [];
+        // -- categorias dos lugares
+        $typePlaces = $this->potentialClient->types;
+        // -- tipos de buscas permitidas pelo google places
+        $typeSearchs = $this->potentialClient->searchs;
+        // -- lista de clientes em potencial gravados
+        $potentialClients = $this->potentialClient->all();
+        
+        $allCountries = $this->countries->all();
+        
+        $response = $this->googlePlaces->nearbySearch($dataSearch->lat.','.$dataSearch->lng, $dataSearch->radius, 
+            [
+                'type' => $dataSearch->type, 
+                'rankby' => 'distance', 
+                'keyword' => $dataSearch->keyword
+        ]);
+
+        $resultSerach = $response['results'];
+        
+        Mapper::map($dataSearch->lat, $dataSearch->lng);
+        foreach($resultSerach as $place) {
+            Mapper::marker($place['geometry']['location']['lat'], $place['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
+        }
+        
+        return view('potential_clients.list', compact('potentialClients', 'typePlaces', 'typeSearchs', 'allCountries', 'resultSerach'));
+    }
+
     public function placeDetails($place_id)
     {
         $response = $this->googlePlaces->placeDetails($place_id);
         $resultSerach = $response['result'];
-
+        //return view('potential_clients.list');
         return json_encode($resultSerach);
     }
 
+    public function autoComplete($text)
+    {
+        $response = $this->googlePlaces->placeAutocomplete($text);
+        
+        return json_encode($response);
+    }
+
+    public function openFullDetails($place_id)
+    {
+        $response = $this->googlePlaces->placeDetails($place_id);
+        $resultSerach = $response['result'];
+        //return view('potential_clients.list');
+        return view('potential_clients.details', compact('resultSerach'));
+        //return json_encode($resultSerach);
+    }
 }
