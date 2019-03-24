@@ -117,8 +117,25 @@ class PotentialClientsController extends Controller
     {
         $response = $this->googlePlaces->placeDetails($place_id);
         $resultSerach = $response['result'];
-        //return view('potential_clients.list');
-        return view('potential_clients.details', compact('resultSerach'));
+        $photos = [];
+        $photoParams = [];
+
+        foreach($resultSerach['photos'] as $photo)
+        {
+            $photoParams = [
+                'maxwidth' => $photo['width'],
+                'maxheight' => $photo['height']
+            ];
+
+            $responsePhotos = $this->googlePlaces->photo($photo['photo_reference'], $photoParams);
+
+            array_push($photos, $responsePhotos);
+        }
+        
+        Mapper::map($resultSerach['geometry']['location']['lat'], $resultSerach['geometry']['location']['lng']);
+        Mapper::marker($resultSerach['geometry']['location']['lat'], $resultSerach['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
+
+        return view('potential_clients.details', compact('resultSerach', 'photos'));
         //return json_encode($resultSerach);
     }
 }
