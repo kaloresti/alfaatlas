@@ -49,7 +49,7 @@ class PotentialClientsController extends Controller
         // -- tipos de buscas permitidas pelo google places
         $typeSearchs = $this->potentialClient->searchs;
         // -- lista de clientes em potencial gravados
-        $potentialClients = $this->potentialClient->all();
+        //$potentialClients = $this->potentialClient->all();
         
         $allCountries = $this->countries->all();
         
@@ -61,13 +61,11 @@ class PotentialClientsController extends Controller
             Mapper::marker($place['geometry']['location']['lat'], $place['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
         }
         
-        return view('potential_clients.list', compact('potentialClients', 'typePlaces', 'typeSearchs', 'allCountries', 'resultSerach'));
+        return view('potential_clients.list', compact('typePlaces', 'typeSearchs', 'allCountries'));
     }
     
     public function PlaceGoogleSearch(Request $request)
     {   
-        
-        $request->validate($this->potentialClient->rules());
 
         $dataSearch = (object)$request->all();
         //dd($dataSearch);
@@ -77,25 +75,45 @@ class PotentialClientsController extends Controller
         // -- tipos de buscas permitidas pelo google places
         $typeSearchs = $this->potentialClient->searchs;
         // -- lista de clientes em potencial gravados
-        $potentialClients = $this->potentialClient->all();
-        
+        $nextPageToken = null;
+
         $allCountries = $this->countries->all();
         
-        $response = $this->googlePlaces->nearbySearch($dataSearch->lat.','.$dataSearch->lng, $dataSearch->radius, 
+        if(isset($dataSearch->nextPageToken))
+        {
+            $response = $this->googlePlaces->nearbySearch($dataSearch->lat.','.$dataSearch->lng, $dataSearch->radius,
+            [  
+                'pagetoken' => $dataSearch->nextPageToken,
+                'type' => $dataSearch->type, 
+                'rankby' => 'distance', 
+                'keyword' => $dataSearch->keyword
+                
+            ]);
+
+        } else {
+            $request->validate($this->potentialClient->rules());
+
+            $response = $this->googlePlaces->nearbySearch($dataSearch->lat.','.$dataSearch->lng, $dataSearch->radius, 
             [
                 'type' => $dataSearch->type, 
                 'rankby' => 'distance', 
                 'keyword' => $dataSearch->keyword
-        ]);
-
-        $resultSerach = $response['results'];
+            ]);
+        }
         
+        $resultSerach = $response['results'];
+        //dd($resultSerach);
+        if(isset($response['next_page_token']))
+        {
+            $nextPageToken = $response['next_page_token'];
+        } 
+
         Mapper::map($dataSearch->lat, $dataSearch->lng);
         foreach($resultSerach as $place) {
             Mapper::marker($place['geometry']['location']['lat'], $place['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
         }
         
-        return view('potential_clients.list', compact('potentialClients', 'typePlaces', 'typeSearchs', 'allCountries', 'resultSerach'));
+        return view('potential_clients.result', compact('resultSerach', 'dataSearch', 'nextPageToken'));
     }
 
     public function placeDetails($place_id)
@@ -120,18 +138,21 @@ class PotentialClientsController extends Controller
         $photos = [];
         $photoParams = [];
 
-        foreach($resultSerach['photos'] as $photo)
+        if(isset($resultSerach['photos']))
         {
-            $photoParams = [
-                'maxwidth' => $photo['width'],
-                'maxheight' => $photo['height']
-            ];
+            foreach($resultSerach['photos'] as $photo)
+            {
+                $photoParams = [
+                    'maxwidth' => $photo['width'],
+                    'maxheight' => $photo['height']
+                ];
 
-            $responsePhotos = $this->googlePlaces->photo($photo['photo_reference'], $photoParams);
+                $responsePhotos = $this->googlePlaces->photo($photo['photo_reference'], $photoParams);
 
-            array_push($photos, $responsePhotos);
+                array_push($photos, $responsePhotos);
+            }
         }
-        
+                
         Mapper::map($resultSerach['geometry']['location']['lat'], $resultSerach['geometry']['location']['lng']);
         Mapper::marker($resultSerach['geometry']['location']['lat'], $resultSerach['geometry']['location']['lng'], ['symbol' => 'circle', 'scale' => 1000]);
 
